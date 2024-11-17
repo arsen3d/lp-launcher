@@ -287,6 +287,7 @@ function App() {
     }
   ]`;
   const [jobEvents, setJobEvents] = useState([]);
+  const [showIframe, setShowIframe] = useState(false);
   const WSS_ENDPOINT = "wss://rpc.ankr.com/arbitrum_sepolia";
 
   useEffect(() => {
@@ -295,6 +296,7 @@ function App() {
 
     // Listen for JobAdded events
     contract.on("JobAdded", (jobId, client, payee, module, inputs, event) => {
+
       console.log("New job created!:", {
         jobId: jobId.toString(),
         client,
@@ -313,6 +315,8 @@ function App() {
         transactionHash: event.transactionHash
       }]);
 
+      // Show iframe after job creation
+      
 
       let wsProvider;
       let wsContract;
@@ -396,6 +400,7 @@ function App() {
       const tx = await contract.runJob(module, inputs, payee);
       const receipt = await tx.wait();
       console.log("Job started successfully", receipt);
+      setShowIframe(true);
     } catch (error) {
       console.error("Error running job:", error);
     }
@@ -410,10 +415,14 @@ function App() {
     console.log("Account clicked");
   };
 
+  const handleLogoClick = () => {
+    setShowIframe(false);
+  };
+
   return (
     <div className="App">
       <nav className="top-bar">
-        <div className="logo">LP</div>
+        <div className="logo" onClick={handleLogoClick}>LP</div>
         <button className="account-btn" onClick={handleAccountClick}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" 
@@ -422,25 +431,32 @@ function App() {
         </button>
       </nav>
       <header className="App-header">
-      <iframe 
-          className='iframe' 
-          src="https://d5f85f33474a27a110.gradio.live/" 
-          title="YouTube video player" 
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen
-        ></iframe>
-        <div 
-          className="card" 
-          onClick={handleCardClick}
-          style={{ cursor: 'pointer' }}
-        >
-          <img src="gradio.svg" className="card-img" alt="Speech to Text" />
-          <div className="card-body">
-            <h2 className="card-title">Speech to Text</h2>
-            <p className="card-description">Convert speech to text</p>
-          </div>
+        {!showIframe ? (
+           <div 
+           className="card" 
+           onClick={handleCardClick}
+           style={{ cursor: 'pointer' }}
+         >
+          {/* <div className="card"> */}
+            <img src="gradio.svg" className="card-img" alt="Speech to Text" />
+            <div className="card-body">
+              <h2 className="card-title">Speech to Text</h2>
+              <p className="card-description">Convert speech to text</p>
+            </div>
+          {/* </div> */}
         </div>
+        ) : (
+          <div className="iframe-container">
+            <iframe 
+              className="iframe"
+              src="https://d5f85f33474a27a110.gradio.live/"
+              title="Content"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        )}
       </header>
     </div>
   );
