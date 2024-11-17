@@ -441,6 +441,12 @@ function App() {
     setShowIframe(false);
   };
 
+  const handleGpuSelect = (e, gpu) => {
+    e.stopPropagation(); // Prevent card click event
+    console.log(`Selected GPU: ${gpu}`);
+    // Add your GPU selection logic here
+  };
+
   return (
     <div className="App">
       <nav className="top-bar">
@@ -456,18 +462,33 @@ function App() {
       </nav>
       <header className="App-header">
         {!showIframe ? (
+          <div  className="card-container">
            <div 
            className="card" 
            onClick={handleCardClick}
            style={{ cursor: 'pointer' }}
          >
           {/* <div className="card"> */}
-            <img src="gradio.svg" className="card-img" alt="Speech to Text" />
+            <img src="speech-to-text.svg" className="card-img" alt="Speech to Text" />
             <div className="card-body">
               <h2 className="card-title">Speech to Text</h2>
               <p className="card-description">Convert speech to text</p>
             </div>
           {/* </div> */}
+        </div>
+        <div 
+           className="card" 
+           onClick={handleCardClick}
+           style={{ cursor: 'pointer' }}
+         >
+          {/* <div className="card"> */}
+            <img src="logo-gen.svg" className="card-img" alt="Speech to Text" />
+            <div className="card-body">
+              <h2 className="card-title">Logo Generator</h2>
+              <p className="card-description">Generate Logos</p>
+            </div>
+          {/* </div> */}
+        </div>
         </div>
         ) : (
           <div className="iframe-container">
