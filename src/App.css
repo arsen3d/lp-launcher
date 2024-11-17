@@ -2,6 +2,39 @@
   text-align: center;
 }
 
+.top-bar {
+  background-color: #13371d;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.account-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  margin-left: auto; /* This pushes the button to the right */
+}
+
+.account-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,13 +47,14 @@
 }
 
 .App-header {
+  padding-top: 64px;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 1.5vmin);
   color: white;
 }
 
