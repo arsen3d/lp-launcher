@@ -287,7 +287,8 @@ function App() {
     }
   ]`;
   const [jobEvents, setJobEvents] = useState([]);
-  
+  const WSS_ENDPOINT = "wss://rpc.ankr.com/arbitrum_sepolia";
+
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, provider);
@@ -311,6 +312,59 @@ function App() {
         inputs,
         transactionHash: event.transactionHash
       }]);
+
+
+      let wsProvider;
+      let wsContract;
+      
+      const setupWebSocket = () => {
+        try {
+          wsProvider = new ethers.providers.WebSocketProvider(WSS_ENDPOINT);
+          wsContract = new ethers.Contract(CONTRACT_ADDRESS, abi, wsProvider);
+  
+          wsProvider._websocket.on('close', () => {
+            console.log('WebSocket disconnected, reconnecting...');
+            // setTimeout(setupWebSocket, 3000);
+          });
+  
+          wsContract.on("JobAdded", handleJobEvent);
+        } catch (error) {
+          console.error("WebSocket connection failed:", error);
+          // setTimeout(setupWebSocket, 3000);
+        }
+      };
+  
+      const handleJobEvent = (jobId, client, payee, module, inputs, event) => {
+        console.log("New job created:", {
+          jobId: jobId.toString(),
+          client,
+          payee,
+          module,
+          inputs,
+          transactionHash: event.transactionHash
+        });
+        setJobEvents(prev => [...prev, {
+          jobId: jobId.toString(),
+          client,
+          payee,
+          module,
+          inputs,
+          transactionHash: event.transactionHash
+        }]);
+      };
+  
+      // setupWebSocket();
+  
+      return () => {
+        if (wsContract) {
+          wsContract.removeAllListeners("JobAdded");
+        }
+        if (wsProvider) {
+          wsProvider.destroy();
+        }
+      };
+
+
     });
 
     // Cleanup listener on unmount
