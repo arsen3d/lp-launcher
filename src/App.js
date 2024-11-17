@@ -295,7 +295,7 @@ function App() {
 
     // Listen for JobAdded events
     contract.on("JobAdded", (jobId, client, payee, module, inputs, event) => {
-      console.log("New job created:", {
+      console.log("New job created!:", {
         jobId: jobId.toString(),
         client,
         payee,
@@ -394,8 +394,8 @@ function App() {
       const payee = await signer.getAddress();
       
       const tx = await contract.runJob(module, inputs, payee);
-      await tx.wait();
-      console.log("Job started successfully");
+      const receipt = await tx.wait();
+      console.log("Job started successfully", receipt);
     } catch (error) {
       console.error("Error running job:", error);
     }
@@ -422,6 +422,14 @@ function App() {
         </button>
       </nav>
       <header className="App-header">
+      <iframe 
+          className='iframe' 
+          src="https://d5f85f33474a27a110.gradio.live/" 
+          title="YouTube video player" 
+          frameBorder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowFullScreen
+        ></iframe>
         <div 
           className="card" 
           onClick={handleCardClick}

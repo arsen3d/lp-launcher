@@ -58,3 +58,35 @@ code {
   font-size: 1em;
   color: #b0b0b0;
 }
+.iframe-container {
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 20px 0;
+  height: calc(100vh - 100px); /* Adjust 100px based on other elements */
+  display: flex;
+  flex-direction: column;
+}
+
+.iframe-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  flex: 1;
+  min-height: 0; /* Prevents flex item from overflowing */
+}
+
+/* If iframe is in a flex container, add these to parent */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
