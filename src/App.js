@@ -288,6 +288,7 @@ function App() {
   ]`;
   const [jobEvents, setJobEvents] = useState([]);
   const [showIframe, setShowIframe] = useState(false);
+  const [tokenBalance, setTokenBalance] = useState('0');
   const WSS_ENDPOINT = "wss://rpc.ankr.com/arbitrum_sepolia";
 
   useEffect(() => {
@@ -377,6 +378,10 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    fetchTokenBalance();
+  }, []);
+
   const connectWallet = async () => {
     try {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -389,26 +394,43 @@ function App() {
 
   const runJobOnContract = async () => {
     try {
-      const provider = await connectWallet();
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
       
       const module = "speech_to_text";
-      const inputs = ["input1", "input2"]; // Replace with actual inputs
+      const inputs = ["input1", "input2"];
       const payee = await signer.getAddress();
       
       const tx = await contract.runJob(module, inputs, payee);
-      const receipt = await tx.wait();
-      console.log("Job started successfully", receipt);
+      await tx.wait();
+      console.log("Job started successfully");
       setShowIframe(true);
+      await fetchTokenBalance(); // Add balance refresh after transaction
     } catch (error) {
       console.error("Error running job:", error);
+    }
+  };
+
+  const fetchTokenBalance = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const erc20Address = "0x0352485f8a3cB6d305875FaC0C40ef01e0C06535";
+      const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
+      const tokenContract = new ethers.Contract(erc20Address, erc20Abi, provider);
+      const address = await provider.getSigner().getAddress();
+      const balance = await tokenContract.balanceOf(address);
+      setTokenBalance(ethers.utils.formatEther(balance));
+    } catch (error) {
+      console.error("Error fetching balance:", error);
+      setTokenBalance('0');
     }
   };
 
   const handleCardClick = async () => {
     console.log("Card clicked");
     await runJobOnContract();
+    await fetchTokenBalance(); // Add balance refresh
   };
 
   const handleAccountClick = () => {
@@ -422,7 +444,9 @@ function App() {
   return (
     <div className="App">
       <nav className="top-bar">
-        <div className="logo" onClick={handleLogoClick}>LP</div>
+        <div className="logo" onClick={handleLogoClick}>
+          LP <span className="balance">{Number(tokenBalance).toFixed(2)}</span>
+        </div>
         <button className="account-btn" onClick={handleAccountClick}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" 
