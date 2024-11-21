@@ -1,0 +1,28 @@
+<svg 
+  width="16" 
+  height="16" 
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="Community Badge"
+>
+  <!-- Circular background -->
+  <circle 
+    cx="12" 
+    cy="12" 
+    r="9" 
+    stroke="#FF9800" 
+    strokeWidth="2"
+    fill="none"
+  />
+  
+  <!-- Letter C -->
+  <path
+    d="M14 9.5C14 9.5 13 8.5 11.5 8.5C10 8.5 9 9.5 9 12C9 14.5 10 15.5 11.5 15.5C13 15.5 14 14.5 14 14.5"
+    stroke="#FF9800"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    fill="none"
+  />
+</svg>

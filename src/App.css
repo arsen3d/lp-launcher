@@ -1,3 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  padding-top: 60px; /* Adjust this value to match your topbar height */
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -48,15 +63,7 @@
 }
 
 .App-header {
-  padding-top: 64px;
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(8px + 1.5vmin);
-  color: white;
+
 }
 
 .App-link {
@@ -103,6 +110,7 @@ code {
 }
 
 .card {
+  position: relative;
   background: #2c2c2c;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -114,7 +122,8 @@ code {
 }
 
 .card-img {
-  width: 600;
+  width: auto;
+  height: auto;
   border-radius: 8px 8px 0 0;
 }
 
@@ -167,9 +176,113 @@ code {
   overflow-x: hidden;
 }
 .card-container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   padding: 20px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count-badge {
+  margin-left: 38px;
+  padding: 2px 8px;
+  background-color: #4a5b6c;
+  color: #c4c9cf;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.gpu-options {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0 15px;
+}
+
+.gpu-badge {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.gpu-badge:hover {
+  background: #3a3a3a;
+}
+.tech-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.75rem;
+  color: #808080;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.verified-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.main-content {
+  position: relative;
+  /* padding-top: 64px; */
+  background-color: #282c34;
+  min-height: calc(100vh - 60px ) ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 1.5vmin);
+  color: white;
+  /* height: 100%; */
+  overflow-y: auto;
+}
+
+.message-container {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #4a5b6c;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  background: #2a2a2a;
+}
+
+.message {
+  padding: 8px;
+  margin: 4px 0;
+  background: #363636;
+  border-radius: 4px;
+  color: #e0e0e0;
 }

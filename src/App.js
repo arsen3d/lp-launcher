@@ -377,11 +377,30 @@ function App() {
       contract.removeAllListeners("JobAdded");
     };
   }, []);
+  const [socket, setSocket] = useState(null);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     fetchTokenBalance();
-  }, []);
+    const ws = new WebSocket('ws://localhost:3009/test');
+    
+    ws.onopen = () => {
+      console.log('Connected to WebSocket');
+      setSocket(ws);
+    };
 
+    ws.onmessage = (event) => {
+      console.log('messaage');
+      setMessages(prev => [...prev, event.data]);
+    };
+
+    return () => ws.close();
+  }, []);
+  const sendMessage = (msg) => {
+    if (socket) {
+      socket.send(msg);
+    }
+  };
   const connectWallet = async () => {
     try {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -391,7 +410,18 @@ function App() {
       throw error;
     }
   };
-
+  const handleMetaMaskConnect = async (e) => {
+    e.stopPropagation(); // Prevent card click
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+      } catch (error) {
+        console.error('User denied account access');
+      }
+    } else {
+      window.open('https://metamask.io', '_blank');
+    }
+  };
   const runJobOnContract = async () => {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -399,7 +429,7 @@ function App() {
       const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
       
       const module = "speech_to_text";
-      const inputs = ["input1", "input2"];
+      const inputs = ["target=", "input2"];
       const payee = await signer.getAddress();
       
       const tx = await contract.runJob(module, inputs, payee);
@@ -428,12 +458,14 @@ function App() {
   };
 
   const handleCardClick = async () => {
+    await connectWallet();
     console.log("Card clicked");
     await runJobOnContract();
     await fetchTokenBalance(); // Add balance refresh
   };
 
   const handleAccountClick = () => {
+    connectWallet();
     console.log("Account clicked");
   };
 
@@ -460,7 +492,8 @@ function App() {
           </svg>
         </button>
       </nav>
-      <header className="App-header">
+      <div className="main-content">
+     
         {!showIframe ? (
           <div  className="card-container">
            <div 
@@ -468,13 +501,26 @@ function App() {
            onClick={handleCardClick}
            style={{ cursor: 'pointer' }}
          >
-          {/* <div className="card"> */}
+            <div className="card-content">
             <img src="speech-to-text.svg" className="card-img" alt="Speech to Text" />
-            <div className="card-body">
-              <h2 className="card-title">Speech to Text</h2>
-              <p className="card-description">Convert speech to text</p>
+            <span className="count-badge">5.1k runs</span>
             </div>
-          {/* </div> */}
+          <div className="verified-badge">
+            <img src="verified-check.svg" alt="Verified" />
+          </div>
+          <div className="tech-tag">lilypad-tech\sts</div>
+          <div className="gpu-options">
+            <span onClick={(e) => handleGpuSelect(e, 'RTX 4090')} className="gpu-badge">
+              RTX 4090 (5LP)
+            </span>
+            <span onClick={(e) => handleGpuSelect(e, 'RTX 3080')} className="gpu-badge">
+              RTX 3080 (3LP)
+            </span>
+          </div>
+          <div className="card-body">
+            <h2 className="card-title">Speech to Text</h2>
+            <p className="card-description">Convert speech to text</p>
+          </div>
         </div>
         <div 
            className="card" 
@@ -482,7 +528,22 @@ function App() {
            style={{ cursor: 'pointer' }}
          >
           {/* <div className="card"> */}
+          <div className="card-content">
             <img src="logo-gen.svg" className="card-img" alt="Speech to Text" />
+            <span className="count-badge">987 runs</span>
+          </div>
+            <div className="verified-badge">
+            <img src="community-badge.svg" alt="Verified" />
+          </div>
+            <div className="tech-tag">arsenum\logo-gen</div>
+            <div className="gpu-options">
+            <span onClick={(e) => handleGpuSelect(e, 'RTX 4090')} className="gpu-badge">
+              RTX 4090 (5LP)
+            </span>
+            <span onClick={(e) => handleGpuSelect(e, 'RTX 3080')} className="gpu-badge">
+              RTX 3080 (3LP)
+            </span>
+          </div>
             <div className="card-body">
               <h2 className="card-title">Logo Generator</h2>
               <p className="card-description">Generate Logos</p>
@@ -502,7 +563,14 @@ function App() {
             ></iframe>
           </div>
         )}
-      </header>
+        <div className="message-container">
+        {messages.map((msg, index) => (
+          <div key={index} className="message">{msg}</div>
+        ))}
+      </div>
+      <button onClick={() => sendMessage('Hello!')}>Send Message</button>
+    
+      </div>
     </div>
   );
 }
