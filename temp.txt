@@ -1,0 +1,124 @@
+2024-12-13 14:18:32 INFO [12-13|22:18:32.702] retaining ability to lookup full transaction history as archive mode is enabled
+2024-12-13 14:18:32 INFO [12-13|22:18:32.702] using existing jwt file                  filename=/home/user/.arbitrum/jwtsecret
+2024-12-13 14:18:32 INFO [12-13|22:18:32.702] Running Arbitrum nitro node              revision=v3.2.1-d81324d vcs.time=2024-09-24T10:12:36-05:00
+2024-12-13 14:18:33 INFO [12-13|22:18:33.099] connected to l1 chain                    l1url=https://sepolia-rollup.arbitrum.io/rpc l1chainid=421,614
+2024-12-13 14:18:33 INFO [12-13|22:18:33.331] Using pebble as the backing database
+2024-12-13 14:18:33 INFO [12-13|22:18:33.331] Allocated cache and file handles         database="/home/user/.arbitrum/My Arbitrum L3 Chain/nitro/l2chaindata" cache=16.00MiB handles=16
+2024-12-13 14:18:33 INFO [12-13|22:18:33.365] Opened ancient database                  database="/home/user/.arbitrum/My Arbitrum L3 Chain/nitro/l2chaindata/ancient/chain" readonly=true
+2024-12-13 14:18:33 INFO [12-13|22:18:33.372] Using pebble as the backing database
+2024-12-13 14:18:33 INFO [12-13|22:18:33.372] Allocated cache and file handles         database="/home/user/.arbitrum/My Arbitrum L3 Chain/nitro/l2chaindata" cache=2.00GiB handles=512
+2024-12-13 14:18:33 INFO [12-13|22:18:33.469] Opened ancient database                  database="/home/user/.arbitrum/My Arbitrum L3 Chain/nitro/l2chaindata/ancient/chain" readonly=false
+2024-12-13 14:18:33 INFO [12-13|22:18:33.474] Using pebble as the backing database
+2024-12-13 14:18:33 INFO [12-13|22:18:33.474] Allocated cache and file handles         database="/home/user/.arbitrum/My Arbitrum L3 Chain/nitro/wasm" cache=2.00GiB handles=512
+2024-12-13 14:18:33 INFO [12-13|22:18:33.518] State scheme set by user                 scheme=hash
+2024-12-13 14:18:33 INFO [12-13|22:18:33.519] 
+2024-12-13 14:18:33 INFO [12-13|22:18:33.519] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+2024-12-13 14:18:33 INFO [12-13|22:18:33.520] Chain ID:  68283778764 (unknown)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.520] Consensus: Clique (proof-of-authority)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.520] 
+2024-12-13 14:18:33 INFO [12-13|22:18:33.521] Pre-Merge hard forks (block based):
+2024-12-13 14:18:33 INFO [12-13|22:18:33.521]  - Homestead:                   #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/homestead.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.521]  - Tangerine Whistle (EIP 150): #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/tangerine-whistle.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.521]  - Spurious Dragon/1 (EIP 155): #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/spurious-dragon.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.522]  - Spurious Dragon/2 (EIP 158): #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/spurious-dragon.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.523]  - Byzantium:                   #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/byzantium.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.523]  - Constantinople:              #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/constantinople.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.523]  - Petersburg:                  #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/petersburg.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.523]  - Istanbul:                    #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/istanbul.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.524]  - Muir Glacier:                #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/muir-glacier.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.524]  - Berlin:                      #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/berlin.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.524]  - London:                      #0        (https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/london.md)
+2024-12-13 14:18:33 INFO [12-13|22:18:33.524] 
+2024-12-13 14:18:33 INFO [12-13|22:18:33.525] The Merge is not yet available for this network!
+2024-12-13 14:18:33 INFO [12-13|22:18:33.525]  - Hard-fork specification: https://github.com/ethereum/execution-specs/blob/master/network-upgrades/mainnet-upgrades/paris.md
+2024-12-13 14:18:33 INFO [12-13|22:18:33.525] 
+2024-12-13 14:18:33 INFO [12-13|22:18:33.525] Post-Merge hard forks (timestamp based):
+2024-12-13 14:18:33 INFO [12-13|22:18:33.526] 
+2024-12-13 14:18:33 INFO [12-13|22:18:33.526] ---------------------------------------------------------------------------------------------------------------------------------------------------------
+2024-12-13 14:18:33 INFO [12-13|22:18:33.526] 
+2024-12-13 14:18:33 INFO [12-13|22:18:33.528] Loaded most recent local block           number=1201 hash=293800..ede996 td=1202 age=1h14m21s
+2024-12-13 14:18:33 INFO [12-13|22:18:33.533] Initialized transaction indexer          range="entire chain"
+2024-12-13 14:18:33 INFO [12-13|22:18:33.541] Using pebble as the backing database
+2024-12-13 14:18:33 INFO [12-13|22:18:33.541] Allocated cache and file handles         database="/home/user/.arbitrum/My Arbitrum L3 Chain/nitro/arbitrumdata" cache=16.00MiB handles=16
+2024-12-13 14:18:33 WARN [12-13|22:18:33.580] Getting file info                        dir= error="stat : no such file or directory"
+2024-12-13 14:18:33 WARN [12-13|22:18:33.580] Getting file info                        dir=/workspace/target/machines error="stat /workspace/target/machines: no such file or directory"
+2024-12-13 14:18:33 WARN [12-13|22:18:33.580] Getting file info                        dir=/home/user/machines        error="stat /home/user/machines: no such file or directory"
+2024-12-13 14:18:33 INFO [12-13|22:18:33.848] REST Aggregator URLs                     urls=[http://das-server:9877]
+2024-12-13 14:18:33 INFO [12-13|22:18:33.849] Trying to start RestfulServerListFetchDaemon with empty online-url-list, not starting.
+2024-12-13 14:18:33 INFO [12-13|22:18:33.849] Cgroups v1 detected, enabling memory limit RPC throttling
+2024-12-13 14:18:33 INFO [12-13|22:18:33.850] Disabling data poster storage, as parent chain appears to be an Arbitrum chain without a mempool
+2024-12-13 14:18:34 INFO [12-13|22:18:34.142] running as validator                     txSender=0x53a76C4005121F313f907076741b0F7BA46e2768 actingAsWallet=0x53a76C4005121F313f907076741b0F7BA46e2768 whitelisted=true strategy=MakeNodes
+2024-12-13 14:18:34 INFO [12-13|22:18:34.143] Disabling data poster storage, as parent chain appears to be an Arbitrum chain without a mempool
+2024-12-13 14:18:34 INFO [12-13|22:18:34.234] validation node started
+2024-12-13 14:18:34 WARN [12-13|22:18:34.239] Unclean shutdown detected                booted=2024-12-02T20:23:06+0000 age=1w4d1h
+2024-12-13 14:18:34 WARN [12-13|22:18:34.239] Unclean shutdown detected                booted=2024-12-05T19:52:41+0000 age=1w1d2h
+2024-12-13 14:18:34 WARN [12-13|22:18:34.239] Unclean shutdown detected                booted=2024-12-07T03:16:16+0000 age=6d19h2m
+2024-12-13 14:18:34 WARN [12-13|22:18:34.239] Unclean shutdown detected                booted=2024-12-12T01:19:20+0000 age=1d20h59m
+2024-12-13 14:18:34 WARN [12-13|22:18:34.240] Unclean shutdown detected                booted=2024-12-13T16:56:10+0000 age=5h22m24s
+2024-12-13 14:18:34 INFO [12-13|22:18:34.380] Starting peer-to-peer node               instance=nitro/v3.2.1-d81324d/linux-amd64/go1.21.10
+2024-12-13 14:18:34 WARN [12-13|22:18:34.381] P2P server will be useless, neither dialing nor listening
+2024-12-13 14:18:34 INFO [12-13|22:18:34.414] New local node record                    seq=1,732,655,041,746 id=9afbf1326d2df994 ip=127.0.0.1 udp=0 tcp=0
+2024-12-13 14:18:34 INFO [12-13|22:18:34.415] Started P2P networking                   self=enode://4d697b0b297f4b0644447fe7044eae24310b5609f7ab3d623e88b41605662f14ca0f9cc96b345f2072f99e3ff54a38ce92c397946ca6211004eb24ae7a9e8c5d@127.0.0.1:0
+2024-12-13 14:18:34 INFO [12-13|22:18:34.416] Loaded JWT secret file                   path=/home/user/.arbitrum/jwtsecret crc32=0xea535bb7
+2024-12-13 14:18:34 INFO [12-13|22:18:34.417] HTTP server started                      endpoint=[::]:8449 auth=false prefix= cors=* vhosts=*
+2024-12-13 14:18:34 INFO [12-13|22:18:34.417] WebSocket enabled                        url=ws://[::]:8448
+2024-12-13 14:18:34 INFO [12-13|22:18:34.417] WebSocket enabled                        url=ws://127.0.0.1:8549
+2024-12-13 14:18:34 INFO [12-13|22:18:34.417] HTTP server started                      endpoint=127.0.0.1:8549 auth=true  prefix= cors=localhost vhosts=
+2024-12-13 14:18:34 INFO [12-13|22:18:34.824] Data poster transactions confirmed       previousNonce=0 newNonce=33 previousL1Block=<nil> newL1Block=106,642,923
+2024-12-13 14:18:35 INFO [12-13|22:18:35.286] connected to validation server           name=jit-cranelift room=32
+2024-12-13 14:18:35 INFO [12-13|22:18:35.287] BlockValidator initialized               current=184884..0baa39 pending=184884..0baa39
+2024-12-13 14:18:35 INFO [12-13|22:18:35.287] validator chosen                         WasmModuleRoot=184884..0baa39 chosen=jit-cranelift
+2024-12-13 14:18:35 INFO [12-13|22:18:35.287] validated execution                      messageCount=1104 globalstate="{BlockHash:0x47144326f2b1cd698f083cebbb5a241b4584b72ba52d4e5dda61ec8721ae5c3b SendRoot:0x0000000000000000000000000000000000000000000000000000000000000000 Batch:34 PosInBatch:0}" WasmRoots=[0x184884e1eb9fefdc158f6c8ac912bb183bf3cf83f0090317e0bc4ac5860baa39]
+
+
+  return;
+      // let tmpdata = []
+      // tmpdata.push({module: "github.com/arsenum/gradio_whisper_module:main"})
+      // console.log(offerModules)
+      for (const module of tmpdata) {
+        const moduleUrl = `https://${module.module.replace("github.com","raw.githubusercontent.com").replace(":main","/refs/heads/main/lilypad_module.json.tmpl")}`;
+      
+        console.log("readmeData", Object.keys(jsonContent)[0])
+        let response = null;
+        try {
+           response = await fetch(moduleUrl);
+      
+          // if (!response.ok) {
+          //   continue;
+          // }
+        
+        }catch (error) {
+          continue; 
+          }
+          const moduleData = (await response.text()).replaceAll("{{",'"').replaceAll("}}",'"');
+          
+
+          try {
+            const db = event.target.result;
+            const transaction = db.transaction('modules', 'readwrite');
+            const store = transaction.objectStore('modules');
+            transaction.oncomplete = function(event) {
+              // setData(data);
+                console.log('Modules DEF stored successfully');
+                const transaction = db.transaction('modules', 'readonly');
+                const store = transaction.objectStore('modules');
+                const getAllRequest = store.getAll();
+
+                getAllRequest.onsuccess = function(event) {
+                const allModules = event.target.result;
+                setData(allModules);
+                };
+
+                getAllRequest.onerror = function(event) {
+                console.error('Error fetching stored modules:', event.target.errorCode);
+                };
+              };
+          const d = JSON.parse(moduleData)
+          d.name = Object.keys(jsonContent)[0]
+          store.put({ module: module.module, data:  d});
+        
+        } catch (error) {
+          console.error(`Error storing module ${module.module}:`, error);
+          // console.error(`Error fetching module ${module.module}:`, error);
+        }
+      }

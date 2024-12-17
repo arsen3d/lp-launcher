@@ -1,0 +1,1 @@
+[{"inputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"string","name":"dealId","type":"string"},{"internalType":"string","name":"dataId","type":"string"}],"name":"submitResults","outputs":[],"stateMutability":"nonpayable","type":"function"}]

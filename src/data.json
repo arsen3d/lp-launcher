@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Whisper",
+        "description": "Gradio Speech To Text",
+        "module": "github.com/arsenum/gradio_whisper_module:main",
+        "runs": 1443,
+        "logo": "example-logo.png",
+        "verificationCheck": true
+    },
+    {
+        "name": "Flux",
+        "description": "Gradio Photo Gen",
+        "module": "github.com/arsen3d/flux:main",
+        "runs": 1443,
+        "logo": "example-logo.png",
+        "verificationCheck": true
+    },
+    {
+        "name": "Game Sandbox",
+        "description": "Unreal  Pixel Streaming",
+        "module": "arsenum\\game",
+        "runs": 1443,
+        "logo": "example-logo.png",
+        "verificationCheck": true
+    },
+    {
+        "name": "Jupyter ",
+        "description": "Data Science Notebook",
+        "module": "arsenum\\jupyter",
+        "runs": 7654,
+        "logo": "example-logo.png",
+        "verificationCheck": true
+    },
+    {
+        "name": "ComfyUI",
+        "description": "Media Generation",
+        "module": "arsenum\\comfyui",
+        "runs": 9834,
+        "logo": "example-logo.png",
+        "verificationCheck": true
+    },
+    {
+        "name": "BioML Lab",
+        "description": "Bioinformatics Toolkit",
+        "module": "arsenum\\bioml",
+        "runs": 5544,
+        "logo": "example-logo.png",
+        "verificationCheck": true
+    }
+]

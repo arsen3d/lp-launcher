@@ -1,7 +1,8 @@
 version: '3.8'
 
 services:
-  lp-apps:
+  socket:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
@@ -18,7 +19,26 @@ services:
       - NPM_CONFIG_LOGLEVEL=verbose
     networks:
       - localnet  
-    command: ["npm","run", "docker"]
+    command: ["npm","run", "server"]
+  demo:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NPM_CONFIG_LOGLEVEL=verbose
+      shm_size: '2gb'
+    image: lp-apps:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - NPM_CONFIG_LOGLEVEL=verbose
+    networks:
+      - localnet  
+    command: ["npm","run", "docker"]    
 networks:
   localnet:
     external: true
